@@ -1,0 +1,31 @@
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    padding: 10px 10px;
+    margin-left: 30%;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    font-weight: bold; /* Corrected this line */
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  
+  nav ul li a:hover {
+    background-color: #e0e0e0;
+    color: #000;
+  }
+  
+  /* Highlight active link */
+  nav ul li a.active {
+    background-color: #246071;
+    color: #fff;
+  }
+  
