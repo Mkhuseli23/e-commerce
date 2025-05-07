@@ -1,0 +1,39 @@
+.admin-dashboard {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.product-form, .product-list {
+  margin-bottom: 30px;
+}
+
+.product-form label, .product-list label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form textarea,
+.product-list input[type="text"],
+.product-list input[type="number"],
+.product-list textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.product-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-list li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.product-list button {
+  margin-right: 10px;
+}

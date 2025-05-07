@@ -1,13 +1,15 @@
 <div class="video-container">
-  <video autoplay muted loop playsinline>
-    <source src="https://drive.google.com/file/d/1BkBD2NZoa52eaijKokcNh4o9USem6PVw/view?usp=sharing" type="video/mp4" preload="auto" />
-    Your browser does not support HTML5 video.
-  </video>
+  <div class="image-row">
+    <img src="../assets/images/WIN28454@1.5x.jpg" alt="Image" class="background-image" />
+    <img src="../assets/images/WIN28454@1.5x.jpg" alt="Image" class="background-image" />
+    <img src="../assets/images/WIN28454@1.5x.jpg" alt="Image" class="background-image" />
+  </div>
+
   <div class="video-overlay">
     <div class="welcome-content">
       <h1>Welcome to Kids Fashion</h1>
       <p class="subtitle">Discover our latest collection of children's clothing</p>
-      <button class="shop-now" routerLink="/products">Shop Now</button>
+      <button class="shop-now" (click)="navigateToProducts()">Shop Now</button>
     </div>
   </div>
 </div>

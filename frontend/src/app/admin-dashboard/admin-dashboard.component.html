@@ -1,0 +1,61 @@
+<div class="admin-dashboard">
+  <h2>Admin Dashboard - Product Management</h2>
+
+  <div class="product-form">
+    <h3>Add New Product</h3>
+    <form (ngSubmit)="addProduct()">
+      <label>
+        Name:
+        <input type="text" [(ngModel)]="newProduct.name" name="name" required />
+      </label>
+      <label>
+        Price:
+        <input type="number" [(ngModel)]="newProduct.price" name="price" required />
+      </label>
+      <label>
+        Description:
+        <textarea [(ngModel)]="newProduct.description" name="description" required></textarea>
+      </label>
+      <label>
+        Image URL:
+        <input type="text" [(ngModel)]="newProduct.imageUrl" name="imageUrl" required />
+      </label>
+      <button type="submit">Add Product</button>
+    </form>
+  </div>
+
+  <div class="product-list">
+    <h3>Existing Products</h3>
+    <ul>
+      <li *ngFor="let product of products">
+        <div *ngIf="editingProduct?.id !== product.id">
+          <strong>{{ product.name }}</strong> - \${{ product.price }}
+          <button (click)="editProduct(product)">Edit</button>
+          <button (click)="deleteProduct(product.id!)">Delete</button>
+        </div>
+        <div *ngIf="editingProduct?.id === product.id">
+          <form (ngSubmit)="updateProduct()">
+            <label>
+              Name:
+              <input type="text" [(ngModel)]="editingProduct!.name" name="editName" required />
+            </label>
+            <label>
+              Price:
+              <input type="number" [(ngModel)]="editingProduct!.price" name="editPrice" required />
+            </label>
+            <label>
+              Description:
+              <textarea [(ngModel)]="editingProduct!.description" name="editDescription" required></textarea>
+            </label>
+            <label>
+              Image URL:
+              <input type="text" [(ngModel)]="editingProduct!.imageUrl" name="editImageUrl" required />
+            </label>
+            <button type="submit">Update</button>
+            <button type="button" (click)="cancelEdit()">Cancel</button>
+          </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
