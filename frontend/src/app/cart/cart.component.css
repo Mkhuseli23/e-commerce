@@ -1,0 +1,33 @@
+#cart-details {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    color: #246071;
+    font-size: 2rem;
+    margin-top: 2rem;
+    font-weight: 600;
+  }
+  
+  button {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 2rem;
+    background-color: #246071;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1a4b59;
+  }
+  
