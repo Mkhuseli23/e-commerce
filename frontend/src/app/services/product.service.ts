@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, addDoc, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 export interface Product {
   id?: string;
@@ -14,27 +13,40 @@ export interface Product {
   providedIn: 'root'
 })
 export class ProductService {
-  private productsCollection;
+  private products: Product[] = [];
 
-  constructor(private firestore: Firestore) {
-    this.productsCollection = collection(this.firestore, 'products');
-  }
+  constructor() {}
 
   getProducts(): Observable<Product[]> {
-    return collectionData(this.productsCollection, { idField: 'id' }) as Observable<Product[]>;
+    return of(this.products);
   }
 
   addProduct(product: Product): Promise<void> {
-    return addDoc(this.productsCollection, { ...product }).then(() => {});
+    return new Promise((resolve) => {
+      const newProduct = { ...product, id: this.generateId() };
+      this.products.push(newProduct);
+      resolve();
+    });
   }
 
   updateProduct(id: string, product: Product): Promise<void> {
-    const productDoc = doc(this.firestore, `products/${id}`);
-    return updateDoc(productDoc, { ...product });
+    return new Promise((resolve) => {
+      const index = this.products.findIndex(p => p.id === id);
+      if (index !== -1) {
+        this.products[index] = { ...product, id };
+      }
+      resolve();
+    });
   }
 
   deleteProduct(id: string): Promise<void> {
-    const productDoc = doc(this.firestore, `products/${id}`);
-    return deleteDoc(productDoc);
+    return new Promise((resolve) => {
+      this.products = this.products.filter(p => p.id !== id);
+      resolve();
+    });
+  }
+
+  private generateId(): string {
+    return Math.random().toString(36).substr(2, 9);
   }
 }

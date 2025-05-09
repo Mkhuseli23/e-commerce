@@ -1,32 +1,23 @@
-import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+// src/app/services/auth.service.ts
+import { Injectable } from '@angular/core';
 
-@Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class LoginComponent {
-  email: string = '';
-  password: string = '';
-  errorMessage: string = '';
+export class AuthService {
+  // Dummy user (replace with API call logic)
+  private readonly validUser = {
+    email: 'admin@example.com',
+    password: 'admin123'
+  };
 
-  private auth = inject(Auth);
-  private router = inject(Router);
-
-  login() {
-    this.errorMessage = '';
-    signInWithEmailAndPassword(this.auth, this.email, this.password)
-      .then(() => {
-        this.router.navigate(['/admin']);
-      })
-      .catch(error => {
-        this.errorMessage = error.message;
-      });
+  login(email: string, password: string): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      if (email === this.validUser.email && password === this.validUser.password) {
+        resolve(true);
+      } else {
+        reject(new Error('Invalid email or password.'));
+      }
+    });
   }
 }
